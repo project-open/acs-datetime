@@ -446,8 +446,8 @@ ad_proc -private dt_navbar_view {
     <tr align=center class=\"table-header\">"
     
     # ben: taking out year for now, since it doesn't work
-    foreach viewname {list day week month} {
-        set text [string toupper $viewname 0]
+    foreach {viewname viewlink viewdesc} [list "list" [_ acs-datetime.List] [_ acs-datetime.view_calendar_day] "day" [_ acs-datetime.Day] [_ acs-datetime.view_calendar_list] "week" [_ acs-datetime.Week] [_ acs-datetime.view_calendar_week] "month" [_ acs-datetime.Month] [_ acs-datetime.view_calendar_month]] {
+        set text [string toupper $viewlink 0]
         if { $viewname == $view } {
             # current view
             append result "<td class=\"selected\">
@@ -456,7 +456,7 @@ ad_proc -private dt_navbar_view {
     "
         } else {
             append result "<td class=\"no-border\">
-    <a href=\"$base_url" "view=$viewname&date=$date\">
+    <a href=\"$base_url" "view=$viewname&date=$date\" title=\"$viewdesc\">
     <font size=-1><b>$text</b></font></a>
     </td>
     "
@@ -846,7 +846,7 @@ ad_proc dt_widget_calendar_navigation {
     is [dt_ansi_to_pretty]</font></td></tr>
     <tr><td align=center><br>
     <form method=get action=$base_url>
-    <INPUT TYPE=text name=date size=10> <INPUT type=image src=\"/resources/acs-subsite/go.gif\" alt=\"Go\" border=0><br><font size=-2>Date as YYYYMMDD</font>
+    <INPUT TYPE=text name=date size=10><INPUT type=image src=\"/resources/acs-subsite/go.gif\" alt=\"Go\" border=0> <br><font size=-2>Date as YYYYMMDD</font>
     <INPUT TYPE=hidden name=view value=day>
     "
 
