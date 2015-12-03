@@ -10,29 +10,27 @@ ad_library {
 }
 
 ad_proc dt_widget_month { 
-    {
-	-calendar_details "" 
-	-date "" 
-	-days_of_week ""
-	-large_calendar_p 1 
-	-master_bgcolor "black" 
-	-header_bgcolor "black" 
-	-header_text_color "white" 
-	-header_text_size "+2" 
-	-day_number_template {<!--$julian_date-->$day_number} 
-	-day_header_size 2 
-	-day_header_bgcolor "#666666" 
-	-calendar_width "100%" 
-	-day_bgcolor "#DDDDDD" 
-	-today_bgcolor "#DDDDDD" 
-	-day_text_color "white" 
-	-empty_bgcolor "white"  
-	-next_month_template ""   
-	-prev_month_template "" 
-	-prev_next_links_in_title 0 
-	-fill_all_days 0 
-        -show_calendar_name_p 1
-    }
+    {-calendar_details ""}
+    {-date ""}
+    {-days_of_week ""}
+    {-large_calendar_p 1}
+    {-master_bgcolor "black"}
+    {-header_bgcolor "black"}
+    {-header_text_color "white"}
+    {-header_text_size "+2"}
+    {-day_number_template {<!--$julian_date-->$day_number}}
+    {-day_header_size 2}
+    {-day_header_bgcolor "#666666"}
+    {-calendar_width "100%"}
+    {-day_bgcolor "#DDDDDD"}
+    {-today_bgcolor "#DDDDDD"}
+    {-day_text_color "white"}
+    {-empty_bgcolor "white"}
+    {-next_month_template ""}
+    {-prev_month_template ""}
+    {-prev_next_links_in_title 0}
+    {-fill_all_days 0}
+    {-show_calendar_name_p 1}
 } {
     Returns a calendar for a specific month, with details supplied by
     Julian date. Defaults to this month. 
@@ -42,7 +40,7 @@ ad_proc dt_widget_month {
     Julian date of the day, and the value is a string (possibly with
     HTML formatting) that represents the details. 
 } {
-    if [empty_string_p $days_of_week] {
+    if {$days_of_week eq ""} {
 	set days_of_week "[_ acs-datetime.days_of_week]" 
     }
 
@@ -50,7 +48,7 @@ ad_proc dt_widget_month {
 
     set today_date [dt_sysdate]    
 
-    if [empty_string_p $calendar_details] {
+    if {$calendar_details eq ""} {
 	set calendar_details [ns_set create calendar_details]
     }
 
@@ -61,12 +59,12 @@ ad_proc dt_widget_month {
     set next_month_url ""
     set prev_month_url ""
 
-    if ![empty_string_p $prev_month_template] {
+    if {$prev_month_template ne ""} {
 	set ansi_date      [ns_urlencode $prev_month]
 	set prev_month_url [subst $prev_month_template]
     }
 
-    if ![empty_string_p $next_month_template] {
+    if {$next_month_template ne ""} {
 	set ansi_date      [ns_urlencode $next_month]
 	set next_month_url [subst $next_month_template]
     }
@@ -140,7 +138,7 @@ ad_proc dt_widget_month {
             set day_number 1
         } elseif {$julian_date > $last_julian_date} {
             break
-        } elseif {$julian_date == [expr $last_julian_date_in_month+1]} {
+        } elseif {$julian_date == $last_julian_date_in_month + 1} {
             set day_number 1
         }
 
@@ -212,29 +210,27 @@ ad_proc dt_widget_month {
 }
 
 ad_proc dt_widget_month_small { 
-    {
-	-calendar_details "" 
-	-date "" 
-	-days_of_week ""
-	-large_calendar_p 0 
-	-master_bgcolor "black" 
-	-header_bgcolor "black" 
-	-header_text_color "white" 
-	-header_text_size "+1" 
-	-day_number_template {<!--$julian_date-->$day_number} 
-	-day_header_size 1 
-	-day_header_bgcolor "#666666" 
-	-calendar_width 0 
-	-day_bgcolor "#DDDDDD" 
-	-day_text_color "white" 
-	-empty_bgcolor "white"  
-	-next_month_template ""   
-	-prev_month_template ""
-    }
+    {-calendar_details ""}
+    {-date ""}
+    {-days_of_week ""}
+    {-large_calendar_p 0}
+    {-master_bgcolor "black"}
+    {-header_bgcolor "black"}
+    {-header_text_color "white"}
+    {-header_text_size "+1"}
+    {-day_number_template {<!--$julian_date-->$day_number}}
+    {-day_header_size 1}
+    {-day_header_bgcolor "#666666"}
+    {-calendar_width 0}
+    {-day_bgcolor "#DDDDDD"}
+    {-day_text_color "white"}
+    {-empty_bgcolor "white"}
+    {-next_month_template ""}
+    {-prev_month_template ""}
 } {
     Returns a small calendar for a specific month. Defaults to this month.
 } {
-    if [empty_string_p $days_of_week] {
+    if {$days_of_week eq ""} {
 	set days_of_week "[_ acs-datetime.short_days_of_week]"
     }
     return [dt_widget_month \
@@ -258,31 +254,29 @@ ad_proc dt_widget_month_small {
 }
 
 ad_proc dt_widget_month_centered { 
-    {
-	-calendar_details "" 
-	-date "" 
-	-days_of_week ""
-	-large_calendar_p 0 
-	-master_bgcolor "black" 
-	-header_bgcolor "black" 
-	-header_text_color "white" 
-	-header_text_size "+1" 
-	-day_number_template {<!--$julian_date-->$day_number} 
-	-day_header_size 1 
-	-day_header_bgcolor "#666666" 
-	-calendar_width 0 
-	-day_bgcolor "#DDDDDD" 
-	-day_text_color "white" 
-	-empty_bgcolor "white"  
-	-next_month_template ""   
-	-prev_month_template ""  
-    }
+    {-calendar_details ""}
+    {-date ""}
+    {-days_of_week ""}
+    {-large_calendar_p 0}
+    {-master_bgcolor "black"}
+    {-header_bgcolor "black"}
+    {-header_text_color "white"}
+    {-header_text_size "+1"}
+    {-day_number_template {<!--$julian_date-->$day_number}}
+    {-day_header_size 1}
+    {-day_header_bgcolor "#666666"}
+    {-calendar_width 0}
+    {-day_bgcolor "#DDDDDD"}
+    {-day_text_color "white"}
+    {-empty_bgcolor "white"}
+    {-next_month_template ""}
+    {-prev_month_template ""}
 } {
     Returns a calendar for a specific month, with details supplied by
     Julian date. Defaults to this month.
 } {
 
-    if [empty_string_p $days_of_week] {
+    if {$days_of_week eq ""} {
 	set days_of_week "[_ acs-datetime.short_days_of_week]" 
     }
     set output ""
@@ -310,25 +304,24 @@ ad_proc dt_widget_month_centered {
 }
 
 ad_proc dt_widget_year { 
-    {
-	-calendar_details "" 
-	-date "" 
-	-days_of_week ""
-	-large_calendar_p 0 
-	-master_bgcolor "black" 
-	-header_bgcolor "black" 
-	-header_text_color "white" 
-	-header_text_size "+1" 
-	-day_number_template {<!--$julian_date-->$day_number} 
-	-day_header_size 1 
-	-day_header_bgcolor "#666666" 
-	-calendar_width 0 
-	-day_bgcolor "#DDDDDD" 
-	-day_text_color "white" 
-	-empty_bgcolor "white"  
-	-next_month_template ""   
-	-prev_month_template ""  
-	-width 2} 
+    {-calendar_details ""}
+    {-date ""}
+    {-days_of_week ""}
+    {-large_calendar_p 0}
+    {-master_bgcolor "black"}
+    {-header_bgcolor "black"}
+    {-header_text_color "white"}
+    {-header_text_size "+1"}
+    {-day_number_template {<!--$julian_date-->$day_number}}
+    {-day_header_size 1}
+    {-day_header_bgcolor "#666666"}
+    {-calendar_width 0}
+    {-day_bgcolor "#DDDDDD"}
+    {-day_text_color "white"}
+    {-empty_bgcolor "white"}
+    {-next_month_template ""}
+    {-prev_month_template ""}
+    {-width 2}
 } {
     Returns a year of small calendars given the starting month as a
     date.  Defaults to this month.  Data in calendar_details will be
@@ -338,7 +331,7 @@ ad_proc dt_widget_year {
 	return "[_ acs-datetime.lt_Width_must_be_]"
     }
 
-    if [empty_string_p $days_of_week] {
+    if {$days_of_week eq ""} {
 	set days_of_week "[_ acs-datetime.short_days_of_week]" 
     }
 
@@ -367,31 +360,29 @@ ad_proc dt_widget_year {
 }
 
 ad_proc dt_widget_calendar_year { 
-    {
-	-calendar_details "" 
-	-date "" 
-	-days_of_week ""
-	-large_calendar_p 0 
-	-master_bgcolor "black" 
-	-header_bgcolor "black" 
-	-header_text_color "white" 
-	-header_text_size "+1" 
-	-day_number_template {<!--$julian_date-->$day_number} 
-	-day_header_size 1 
-	-day_header_bgcolor "#666666" 
-	-calendar_width 0 
-	-day_bgcolor "#DDDDDD" 
-	-day_text_color "white" 
-	-empty_bgcolor "white" 
-	-next_month_template "" 
-	-prev_month_template "" 
-	-width 2
-    }
+    {-calendar_details ""}
+    {-date ""}
+    {-days_of_week ""}
+    {-large_calendar_p 0}
+    {-master_bgcolor "black"}
+    {-header_bgcolor "black"}
+    {-header_text_color "white"}
+    {-header_text_size "+1"}
+    {-day_number_template {<!--$julian_date-->$day_number}}
+    {-day_header_size 1}
+    {-day_header_bgcolor "#666666"}
+    {-calendar_width 0}
+    {-day_bgcolor "#DDDDDD"}
+    {-day_text_color "white"}
+    {-empty_bgcolor "white"}
+    {-next_month_template ""}
+    {-prev_month_template ""}
+    {-width 2}
 } {
     Returns a calendar year of small calendars for the year of the
     passed in date.  Defaults to this year. 
 } {
-    if [empty_string_p $days_of_week] {
+    if {$days_of_week eq ""} {
 	set days_of_week "[_ acs-datetime.short_days_of_week]" 
     }
 
@@ -454,16 +445,16 @@ ad_proc -private dt_navbar_view {
         set text [string toupper $viewlink 0]
         if { $viewname == $view } {
             # current view
-            append result "<td class=\"selected\">
-    <span style=\"font-size: smaller\; font-weight: bold\">$text</span>
-    </td>
-    "
+            append result [subst {<td class="selected">
+		<span style="font-size: smaller; font-weight: bold">$text</span>
+		</td>
+	    }]
         } else {
-            append result "<td class=\"no-border\">
-    <a href=\"$base_url" "view=$viewname&date=$date\" title=\"$viewdesc\">
-    <span style=\"font-size: smaller; font-weight: bold\">$text</span></a>
-    </td>
-    "
+            append result [subst {<td class="no-border">
+		<a href="[ns_quotehtml ${base_url}view=$viewname&date=$date]" title="$viewdesc">
+		<span style="font-size: smaller; font-weight: bold">$text</span></a>
+		</td>
+	    }]
         }
     }
 
@@ -484,7 +475,7 @@ ad_proc -private dt_navbar_year {
     string. 
 } {
     # Return immediately of the current view isn't month or year
-    if {[lsearch -exact [list month year] $view] == -1} {
+    if {$view ni [list month year]} {
 	return ""
     }
 
@@ -516,17 +507,19 @@ ad_proc -private dt_navbar_year {
 
     set curr_year [clock format $now -format "%Y"]
 
-    append result "
+    append result [subst {
     <tr>
-    <td nowrap align=center colspan=5 class=\"no-border\">
-    <table cellspacing=0 cellpadding=1 border=0>
-    <tr><td nowrap valign=middle>"
+    <td nowrap align="center" colspan="5" class="no-border">
+    <table cellspacing="0" cellpadding="1" border="0">
+    <tr><td nowrap valign="middle">
+    }]
 
     # Serve arrow link to prev year if it leads to legal date
     if {$prev_year_legal_p != 0} {
-	append result "
-    <a href=\"$base_url" "view=$view&date=[ns_urlencode $prev_year]\">
-    <img border=0 src=[dt_left_arrow]></a>"
+	append result [subst {
+	    <a href="[ns_urlencode ${base_url}view=$view&date=[ns_urlencode $prev_year]]">
+	    <img alt="left arrow" src="[dt_left_arrow]"></a>
+	}]
     }
 
     append result "
@@ -534,9 +527,10 @@ ad_proc -private dt_navbar_year {
     
     # Serve arrow to next year if it leads to a legal date
     if {$next_year_legal_p != 0} {
-	append result "
-    <a href=\"$base_url" "view=$view&date=[ns_urlencode $next_year]\">
-    <img border=0 src=[dt_right_arrow]></a>"
+	append result [subst {
+	    <a href="[ns_quotehtml ${base_url}view=$view&date=[ns_urlencode $next_year]]">
+	    <img alt="right arrow" src="[dt_right_arrow]"></a>
+	}]
     }
 
     append result "
@@ -580,16 +574,18 @@ ad_proc -private dt_navbar_month {
 	}
     }
 
-    append results "
-    <tr><td class=\"bottom-border\" nowrap align=center colspan=5>
-    <table cellspacing=0 cellpadding=1 border=0>
-    <tr><td nowrap valign=middle>"
+    append results [subst {
+	<tr><td class="bottom-border" nowrap align="center" colspan="5">
+	<table cellspacing="0" cellpadding="1" border="0">
+	<tr><td nowrap valign="middle">
+    }]
 
     # Output link to previous month only if it's legal
     if {$prev_month_legal_p != 0} {
-	append results "
-    <a href=\"$base_url" "view=$view&date=[ns_urlencode $prev_month]\">
-    <img border=0 src=[dt_left_arrow]></a>"
+	append results [subst {
+	    <a href="[ns_quotehtml ${base_url}view=$view&date=[ns_urlencode $prev_month]]">
+	    <img alt="left arrow" src="[dt_left_arrow]"></a>
+	}]
     }
     
     append results "
@@ -597,9 +593,10 @@ ad_proc -private dt_navbar_month {
 
     # Output link to next month only if it's a legal month
     if {$next_month_legal_p != 0} {
-	append results "
-    <a href=\"$base_url" "view=$view&date=[ns_urlencode $next_month]\">
-    <img border=0 src=[dt_right_arrow]></a>"
+	append results [subst {
+	    <a href="[ns_quotehtml ${base_url}view=$view&date=[ns_urlencode $next_month]]">
+	    <img border="0" src="[dt_right_arrow]"></a>
+	}]
     }
     
     append results "
@@ -611,7 +608,6 @@ ad_proc -private dt_navbar_month {
 
 
 ad_proc dt_widget_calendar_navigation { 
-    {} 
     {base_url ""} 
     {view "week"} 
     {date ""} 
@@ -632,24 +628,24 @@ ad_proc dt_widget_calendar_navigation {
 
     # valid views are "list" "day" "week" "month" "year"
 
-    if {![exists_and_not_null base_url]} {
+    if {$base_url eq ""} {
 	set base_url [ns_conn url]
     }
 
-    if {[exists_and_not_null pass_in_vars]} {
+    if {$pass_in_vars ne ""} {
 	append base_url "?$pass_in_vars&"
     } else {
 	append base_url "?"
     }
 
-    if {![exists_and_not_null date]} {
+    if {$date eq ""} {
 	set date [dt_sysdate]
     }
 
     set list_of_vars [list]
 
     # Ben: some annoying stuff to do here since we are passing in things in GET format already
-    if {![empty_string_p $pass_in_vars]} {
+    if {$pass_in_vars ne ""} {
         set vars [split $pass_in_vars "&"]
         foreach var $vars {
             set things [split $var "="]
@@ -662,13 +658,13 @@ ad_proc dt_widget_calendar_navigation {
     dt_get_info $date
 
     set output "
-    <center><table class=\"table-display\" border=1 cellpadding=1 cellspacing=0 width=160>
+    <center><table class=\"table-display\" border='1' cellpadding='1' cellspacing='0' width='160'>
 
     [dt_navbar_view $view $base_url $date]
 
     [dt_navbar_year $view $base_url $date]\n"
 
-    if [string equal $view month] {
+    if {$view eq "month"} {
 	# month view
 	append output "
 	<tr>
@@ -679,7 +675,7 @@ ad_proc dt_widget_calendar_navigation {
 
 	set months_list [dt_month_names]
 	set now         [clock scan $date]
-	set curr_month  [expr [dt_trim_leading_zeros [clock format $now -format "%m"]]-1]
+	set curr_month  [expr {[dt_trim_leading_zeros [clock format $now -format "%m"]] - 1}]
 
 	for {set i 0} {$i < 12} {incr i} {
 
@@ -687,7 +683,7 @@ ad_proc dt_widget_calendar_navigation {
 
 	    # show 3 months in a row
 
-	    if {($i != 0) && ([expr $i % 3] == 0)} {
+	    if {$i != 0 && $i % 3 == 0} {
 		append output "</tr><tr>"
 	    }
 	    
@@ -698,43 +694,46 @@ ad_proc dt_widget_calendar_navigation {
 		</td>\n"
 	    } else {
 		set target_date [clock format \
-			[clock scan "[expr $i-$curr_month] month" -base $now] -format "%Y-%m-%d"]
+				     [clock scan "[expr {$i-$curr_month}] month" -base $now] \
+				     -format "%Y-%m-%d"]
 
-		append output "
+		append output [subst {
 		<td>
-		<a href=\"$base_url" "view=month&date=[ns_urlencode $target_date]\">
-		<span style=\"font-size: smaller; color: blue;\">$month</span></a>
-		</td>\n"
+		    <a href="[ns_quotehtml ${base_url}view=month&date=[ns_urlencode $target_date]]">
+		    <span style="font-size: smaller; color: blue;">$month</span></a>
+		</td>
+		}]
 	    }
 	}
 	
 	append output "</tr>"	    
 	
-    } elseif [string equal $view year] {
+    } elseif {$view eq "year"} {
 
 	# year view
 
 	append output "
 	<tr>
 	<td colspan=5>
-	<table bgcolor=ffffff cellspacing=3 cellpadding=1 border=0>
+	<table bgcolor='ffffff' cellspacing='3' cellpadding='1' border='0'>
 	<tr>\n"
 
 	set now       [clock scan $date]
 	set curr_year $year
-	set end_year  [expr $year + 2]
+	set end_year  [expr {$year + 2}]
 	set monthday  [clock format $now -format "%m-%d"]
 
-	for {set year [expr $curr_year - 2]} {$year <= $end_year} {incr year} {
+	for {set year [expr {$curr_year - 2}]} {$year <= $end_year} {incr year} {
 	    if {$year == $curr_year} {
 		append output "
 		<td><span style=\"font-size: smaller; color: red\">$year</span></td>\n"
 	    } else {
-		append output "
+		append output [subst {
 		<td>
-		<a href=\"$base_url" "view=year&date=[ns_urlencode "$year-$monthday"]\">
-		<span style=\"font-size: smaller; color: blue;\">$year</span></a>
-		</td>\n"
+		    <a href="[ns_quotehtml ${base_url}view=year&date=[ns_urlencode $year-$monthday]]">
+		    <span style=\"font-size: smaller; color: blue;\">$year</span></a>
+		</td>
+		}]
 	    }
 	}
 	    
@@ -748,17 +747,20 @@ ad_proc dt_widget_calendar_navigation {
 	</td>
 	</tr>
 
-	<tr><td class=\"bottom-border\"colspan=5>
-	<table cellspacing=3 cellpadding=1>
+	<tr><td class='bottom-border' colspan='5'>
+	<table cellspacing='3' cellpadding='1'>
 	<tr>
 	"
 
 	set days_of_week [list S M T W T F S]
 
 	foreach day_of_week $days_of_week {
-	    append output "<td align=right><span style=\"font-size: smaller; font-weight: bold;\">$day_of_week</span></td>\n"
+	    append output [subst {
+		<td align="right"><span style="font-size: smaller; font-weight: bold;">$day_of_week</span>
+		</td>
+	    }]
 	}
-	append output "</tr><tr><td colspan=7><hr></td></tr>"
+	append output "</tr><tr><td colspan='7'><hr></td></tr>"
 
 	set day_of_week 1
 	set julian_date $first_julian_date
@@ -783,7 +785,7 @@ ad_proc dt_widget_calendar_navigation {
 		set day_number 1
 	    } elseif {$julian_date > $last_julian_date} {
 		break
-	    } elseif {$julian_date == [expr $last_julian_date_in_month +1]} {
+	    } elseif {$julian_date == $last_julian_date_in_month + 1} {
 		set day_number 1
 	    }
 
@@ -792,22 +794,24 @@ ad_proc dt_widget_calendar_navigation {
 	    }
 
 	    if {$before_month_p || $after_month_p} {
-		append output "
-		<td align=right>
-		<a href=\"$base_url" "view=$view&date=[ns_urlencode $ansi_date]\">
-		<span style=\"color: gray\">$day_number</span></a>
-		</td>"
+		append output [subst {
+		<td align="right">
+		    <a href="[ns_quotehtml ${base_url}view=$view&date=[ns_urlencode $ansi_date]]">
+		    <span style="color: gray">$day_number</span></a>
+		</td>
+		}]
 	    } elseif {$julian_date == $julian_date_today} {
 		append output "
-		<td align=right>
+		<td align='right'>
 		<strong>$day_number</strong>
 		</td>"
 	    } else {
-		append output "
-		<td align=right>
-		<a href=\"$base_url" "view=$view&date=[ns_urlencode $ansi_date]\">
-		<span style=\"color: blue\">$day_number</span></a>
-		</td>"
+		append output [subst {
+		 <td align="right">
+		    <a href="[ns_quotehrml ${base_url}view=$view&date=[ns_urlencode $ansi_date]]">
+		    <span style="color: blue">$day_number</span></a>
+		 </td>
+		}]
 	    }
 
 	    incr day_of_week
@@ -824,8 +828,8 @@ ad_proc dt_widget_calendar_navigation {
     append today_url "$base_url" "view=day&date=[ns_urlencode [dt_sysdate]]"
 
     append output "
-    <tr><td align=center colspan=7>
-    <table cellspacing=0 cellpadding=1 border=0>
+    <tr><td align='center' colspan='7'>
+    <table cellspacing='0' cellpadding='1' border='0'>
     <tr><td></td></tr>
     </table>
     </td>
@@ -834,30 +838,31 @@ ad_proc dt_widget_calendar_navigation {
     </center>
     </td>
     </tr>
-    <tr class=\"table-header\"><td align=center colspan=5>
-    <table cellspacing=0 cellpadding=0 border=0>
+    <tr class=\"table-header\"><td align='center' colspan='5'>
+    <table cellspacing='0' cellpadding='0' border='0'>
     <tr><td nowrap>
     <span style=\"font-size: smaller\">"
 
-    if { $view == "day" && [dt_sysdate] == $date } {
+    if { $view eq "day" && [dt_sysdate] == $date } {
         append output "<strong>Today</strong>"
     } else {
-        append output "<a href=\"$today_url\">
-    <strong>Today</strong></a> "
+        append output [subst {<a href="[ns_quotehtml $today_url]"><strong>Today</strong></a> }]
     }
     
-    append output "
+    append output [subst {
     is [dt_ansi_to_pretty]</span></td></tr>
-    <tr><td align=center><br>
-    <form method=get action=$base_url>
-    <div>
-    <INPUT TYPE=text name=date size=10><INPUT type=image src=\"/resources/acs-subsite/go.gif\" alt=\"Go\" border=0> <br><span style=\"font-size:smaller\">Date as YYYYMMDD</span>
-    <INPUT TYPE=hidden name=view value=day>
-    </div>
-    "
+    <tr><td align="center"><br>
+	<form method='get' action="[ns_quotehtml $base_url]">
+	<div>
+	<INPUT TYPE='text' name='date' size='10'>
+	<INPUT type='image' src="/resources/acs-subsite/go.gif" alt="Go" border="0"><br>
+	<span style="font-size:smaller">Date as YYYYMMDD</span>
+	<INPUT TYPE='hidden' name='view' value='day'>
+        </div>
+    }]
 
     foreach var $list_of_vars {
-        append output "<INPUT TYPE=hidden name=[lindex $var 0] value=[lindex $var 1]>"
+        append output "<INPUT TYPE='hidden' name='[lindex $var 0]' value='[lindex $var 1]'>"
     }
     
     append output "
@@ -907,7 +912,7 @@ ad_proc -private dt_get_info {
 } {
     # If no date was passed in, let's set it to today
 
-    if [empty_string_p $the_date] {
+    if {$the_date eq ""} {
         set the_date [dt_sysdate]
     }
 
@@ -941,7 +946,7 @@ ad_proc -private dt_get_info {
     ns_set put $dt_info_set beginning_of_year \
         $year-01-01
     ns_set put $dt_info_set days_in_last_month \
-        [dt_num_days_in_month $year [expr $month - 1]]
+        [dt_num_days_in_month $year [expr {$month - 1}]]
     ns_set put $dt_info_set next_month_name \
         [dt_next_month_name $year $month]
     ns_set put $dt_info_set prev_month_name \
@@ -951,17 +956,17 @@ ad_proc -private dt_get_info {
     ad_ns_set_to_tcl_vars $dt_info_set
 
     ns_set put $dt_info_set first_julian_date \
-        [expr $first_julian_date_of_month + 1 - $first_day_of_month]
+        [expr {$first_julian_date_of_month + 1 - $first_day_of_month}]
     ns_set put $dt_info_set first_day \
-        [expr $days_in_last_month + 2 - $first_day_of_month]
+        [expr {$days_in_last_month + 2 - $first_day_of_month}]
     ns_set put $dt_info_set last_julian_date_in_month \
-        [expr $first_julian_date_of_month + $num_days_in_month - 1]
+        [expr {$first_julian_date_of_month + $num_days_in_month - 1}]
 
     set days_in_next_month \
-        [expr (7-(($num_days_in_month + $first_day_of_month - 1) % 7)) % 7]
+        [expr {(7-(($num_days_in_month + $first_day_of_month - 1) % 7)) % 7}]
 
     ns_set put $dt_info_set last_julian_date \
-        [expr $first_julian_date_of_month + $num_days_in_month - 1 + $days_in_next_month]
+        [expr {$first_julian_date_of_month + $num_days_in_month - 1 + $days_in_next_month}]
 
     # Now, set the variables in the caller's environment
 

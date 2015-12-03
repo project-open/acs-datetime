@@ -1,8 +1,9 @@
 <!-- $Id$ -->
 
-<master src="master">
+<master>
 
-<property name="title">@title;noquote@</property>
+<property name="doc(title)">@title;literal@</property>
+<property name="context">@context;literal@</property>
 
 <p>The following table offers examples of the various date and time
 functions:</p>
@@ -10,10 +11,10 @@ functions:</p>
 <blockquote>
 <table width="95%">
 
-<tr bgcolor=#eeeeee align=left> <th>Procedure</th> <th>Result</th> </tr>
+<tr bgcolor="#eeeeee" align="left"> <th>Procedure</th> <th>Result</th> </tr>
 
 <multiple name="dt_examples">
-    <tr align=left>
+    <tr align="left">
         <td><code>@dt_examples.procedure@</code></td>
         <td>@dt_examples.result@</td>
     </tr>
@@ -36,7 +37,7 @@ results based on the current server time.
 <code>dt_systime</code> accepts any of the formatting codes supported
 by the Tcl <code>clock format</code> procedure, which is used for the
 underlying processing.  See current documentation at <a
-href=http://www.scriptics.com/man/>http://www.scriptics.com/man/</a>. 
+href="http://www.tcl.tk/man/">http:///www.tcl.tk/man/</a>. 
 
 <li>All procedures that take date or time as an input argument are capable of 
 accepting these inputs in any format capable of being parsed by <code>clock

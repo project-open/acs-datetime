@@ -8,14 +8,15 @@ ad_page_contract {
     @creation-date 2000-12-08
     @cvs-id  $Id$
 } {
-    {view ""}
+    {view:word ""}
     {date ""}
 } -properties {
     title:onevalue
     calendar_widget:onevalue
 }
 
-set title "dt_widget_calendar_navigation"
+set title "Calendar Navigation"
+set context [list [list . "ACS DateTime Examples"] $title]
 
 set calendar_widget [dt_widget_calendar_navigation "" $view $date]
 

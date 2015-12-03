@@ -1,8 +1,9 @@
 <!-- $Id$ -->
 
-<master src="master">
+<master>
 
-<property name="title">@title;noquote@</property>
+<property name="doc(title)">@title;literal@</property>
+<property name="context">@context;literal@</property>
 
 <p>There is one main procedure to generate date and time widgets:
 
@@ -21,12 +22,12 @@ widgets:</p>
 <form>
 <table width="95%">
 
-<tr bgcolor=#eeeeee> <th>Procedure</th> <th>Widget</th> </tr>
+<tr bgcolor="#eeeeee"> <th>Procedure</th> <th>Widget</th> </tr>
 
 <multiple name="dt_examples">
-    <tr align=left>
+    <tr align="left">
         <td><code>@dt_examples.procedure@</code></td>
-        <td>@dt_examples.result@</td>
+        <td>@dt_examples.result;noquote@</td>
     </tr>
 </multiple>
 

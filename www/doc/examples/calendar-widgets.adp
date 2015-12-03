@@ -1,12 +1,12 @@
 <!-- $Id$ -->
 
-<master src="master">
+<master>
 
-<property name="title">@title;noquote@</property>
-
+<property name="doc(title)">@title;literal@</property>
+<property name="context">@context;literal@</property>
 
 <p>These are the various widgets to generate calendar views.  Note
-that the <a href=calendar-navigation>calendar navigation</a> widget is
+that the <a href="calendar-navigation">calendar navigation</a> widget is
 documented separately.  This page documents the following:
 
 <ol>
@@ -21,7 +21,7 @@ documented separately.  This page documents the following:
 
 <h4><a name="#@dt_examples.rownum@"></a>@dt_examples.procedure@</h4>
 
-<center> @dt_examples.result@ </center>
+<center> @dt_examples.result;noquote@ </center>
 
 </multiple>
 
