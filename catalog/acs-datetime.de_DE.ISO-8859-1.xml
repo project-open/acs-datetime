@@ -19,10 +19,10 @@
   <msg key="short_days_of_week">S M D M D F S</msg>
   <msg key="to">bis</msg>
   <msg key="Today">Heute: </msg>
-  <msg key="view_calendar_day">Kalender Tagesansicht</msg>
-  <msg key="view_calendar_list">Kalender Listenansicht</msg>
-  <msg key="view_calendar_month">Kalender Monatsansicht</msg>
-  <msg key="view_calendar_week">Kalender Wochenansicht</msg>
+  <msg key="view_calendar_day">Kalender - Tagesansicht</msg>
+  <msg key="view_calendar_list">Kalender - Listenansicht</msg>
+  <msg key="view_calendar_month">Kalender - Monatsansicht</msg>
+  <msg key="view_calendar_week">Kalender - Wochenansicht</msg>
   <msg key="Week">Woche</msg>
   <msg key="Year">Jahr</msg>
 </message_catalog>
